@@ -586,7 +586,7 @@ a.reqe-button {
 
 /* banner */
 .main-top {
-    background: url(../images/1.jpg) no-repeat center;
+    background: url(../images/fondoi.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1471,3 +1471,233 @@ p.copy-right-grids a:hover {
 }
 
 /* //responsive */
+
+/*CODIGO DE LA SECCION DE PRECIOS DE LOS PLANES*/
+/* pricing */
+.w3ls-pricing.card {
+    border: 0;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 3px 0px 0 rgba(0, 0, 0, .08);
+    box-shadow: 0 3px 0px 0 rgba(0, 0, 0, .08);
+    transition: all .3s ease-in-out;
+    padding: 2.25rem;
+    position: relative;
+}
+
+.w3ls-pricing.card-header::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.w3ls-pricing.card:after,
+.service-active:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #1e2d3a;
+    transition: 0.5s;
+}
+
+.w3ls-pricing.card {
+    -webkit-box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.08);
+}
+
+.w3ls-pricing.card:hover:after {
+    width: 100%;
+}
+
+.w3ls-pricing.card.service-active:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #1e2d3a;
+    transition: 0.5s;
+}
+
+.w3ls-pricing .card-header {
+    background-color: white;
+    padding-left: 2rem;
+    border-bottom: 0px;
+}
+
+h4.price-title {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.w3ls-pricing .card-block {
+    padding-top: 0;
+}
+
+.list-group-item {
+    color: #777;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-top: none;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.display-2 {
+    font-size: 4rem;
+    letter-spacing: -6px;
+    color: #1ccacd;
+}
+
+.display-2 .currency {
+    font-size: 2.75rem;
+    position: relative;
+    font-weight: 600;
+    top: -45px;
+    letter-spacing: 0px;
+    color: #ddd;
+}
+
+.display-2 .period {
+    font-size: 1rem;
+    color: #b3b3b3;
+    letter-spacing: 0px;
+}
+
+.btn-gradient {
+    background-color: #1e2d3a;
+    color: #fff;
+    transition: background .3s ease-in-out;
+    box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, .2);
+}
+
+.btn-gradient:hover {
+    color: white;
+    background-color: #1ccacd;
+}
+
+.service-active,
+.service-active .card-header,
+.service-active .list-group-item {
+    background: #1ccacd;
+}
+
+.service-active .btn-gradient:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+/* //pricing */
+
+/*iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+.w3ls-pricing.card {
+    padding: 2rem 1rem;
+}
+
+/*iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+
+.py-xl-5 {
+padding-top: 3rem !important;
+}
+/*iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+
+.py-xl-5 {
+padding-bottom: 3rem !important;
+}
+/*iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+
+
+/*iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+
+
+/*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
+/* FIN CODIGO DE LA SECCION DE PRECIOS DE LOS PLANES*/
+
+/*codigo para la seccion de contactos*/
+h3.tittle-w3ls {
+    color: #1b1b1b;
+    font-size: 3em;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+h3.tittle-w3ls {
+    color: #1b1b1b;
+    font-size: 3em;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+@media screen and (max-width: 1024px) {
+	h3.tittle-w3ls {
+    font-size: 2.5em !important;
+	}
+}
+h3.tittle-w3ls {
+    font-size: 2.3em !important;
+}
+	h3.tittle-w3ls {
+    font-size: 2em !important;
+    }
+    p.tit {
+        font-size: 15px;
+        color: #777;
+        line-height: 2em;
+        width: 70%;
+    }
+    p.tit {
+        line-height: 1.8em;
+        width: 100%;
+    }
+    p.tit {
+        font-size: 14px !important;
+    }
+    .project-top.mx-auto.mt-lg-0.mt-5 {
+        width: 56%;
+    }
+    .project-top.mx-auto.mt-lg-0.mt-5 {
+        width: 100%;
+    }
+    .contact-form h5 {
+        font-weight: 400;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+.map iframe {
+    width: 100%;
+    border: 1px solid #17a2b8;
+    min-height: 50vh;
+}
+.address h5 {
+	color: #000;
+	text-transform: capitalize;
+	font-size: 1.1em;
+}
+.address h5 {
+	font-size: 1.5em;
+}
+.address h5 {
+    font-size: 1.3em !important;
+}
+.address p a,
+p.c-txt {
+	color: #777;
+}
+.address p a:hover {
+	color: #000;
+}
+
+/*fin codigo seccion de contaxtos*/
