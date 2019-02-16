@@ -1701,3 +1701,101 @@ p.c-txt {
 }
 
 /*fin codigo seccion de contaxtos*/
+
+/* codigo footer seccion de contactenos*/
+h2.footer-title,h3.footer-title {
+    font-size: 24px;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.26) !important;
+}
+h2.footer-title,h3.footer-title {
+    font-size: 20px;
+}
+
+.gallery-grid1 .p-mask,
+.row .product .vm-product-media-container .p-mask {
+	opacity: 0;
+	visibility: hidden;
+	background: rgba(25, 24, 24, 0.8);
+	bottom: -2%;
+	position: absolute;
+	padding: 1.3em 1.3em;
+	width: 100%;
+	-webkit-transform: translate3d( 0px, 100%, 0px);
+	-moz-transform: translate3d( 0px, 100%, 0px);
+	-ms-transform: translate3d( 0px, 100%, 0px);
+	-o-transform: translate3d( 0px, 100%, 0px);
+	transform: translate3d( 0px, 100%, 0px);
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+	text-align: left;
+	border-bottom: 6px solid #273b7b;
+}
+.footer-text p,
+ul.links li a,
+.contact-info ul li p,
+.contact-info ul li a {
+    color: #bfbfbf;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.footer-text p, ul.links li a, .contact-info ul li p, .contact-info ul li a {
+    font-size: 14px !important;
+}
+
+ul.links {
+    float: left;
+    width: 50%;
+}
+ul.links li a:hover,
+.contact-info ul li a:hover {
+    color: #fff;
+}
+
+.contact-info ul li span {
+    float: left;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.8;
+}
+.contact-info ul li p span {
+    display: block;
+}
+.fa-map-marker:before {
+    content: "\f041";
+  }
+  
+.footer-social li {
+    display: inline-block;
+}
+.footer-social li a {
+    color: #999;
+    font-size: 15px;
+}
+.footer-social li a:hover {
+    color: #ebb259;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-facebook-square:before {
+  content: "\f082";
+}
+.fa-facebook-f:before,
+.fa-facebook:before {
+  content: "\f09a";
+}
+.fa-facebook-f:before,
+.fa-facebook:before {
+  content: "\f09a";
+}
+.fa-facebook-official:before {
+  content: "\f230";
+}
+/*fin codigo footer seccion de contactos*/
