@@ -10,10 +10,15 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-social.css">
 
-
+	<script src="js/jquery-3.3.1.min.js"></script>
 	<title>Formularios</title>
 
-
+<style>
+ #mensajeErrorCampos{
+     color:red;
+     font-size:110% !important;
+ }
+</style>
 </head>
 <body>
 	
@@ -30,11 +35,13 @@
 		<div class="wrap">
 			<form action="" class="formulario" name="formulario_registro" method="get" onclick="return validacion()">
 				<div>
+					    <div id="mensajeErrorCampos"></div>
 				<div class="input-group">
 						<input type="text" id="nombre" name="nombre">
-					
+				
 						<label class="label" for="nombre">Nombre:</label>
 					</div>
+					
 					<div class="input-group">
 						<input type="email" id="correo" name="correo">
 						
@@ -47,8 +54,8 @@
 					</div>
 				
 	<div class="input-group">
-						<input type="password" id="pass" name="pass">
-						<label class="label" for="pass">Confirmar contraseña:</label>
+						<input type="password" id="Confirmpass" name="pass">
+						<label class="label" for="Confirmpass">Confirmar contraseña:</label>
 					</div>
 			
 	
@@ -56,12 +63,14 @@
 	
 					<div class="input-group checkbox">
 						<input type="checkbox" name="terminos" id="terminos" value="true">
-						<label for="terminos">Acepto los Terminos y Condiciones</label>
+
 					</div>
-						
-					<input class="btn btn-primary btn-block"type="button" id="btn-enviar" value="Enviar"><br>
+					<div id="mensajeExito" style="color:green; font-weight: bold"></div>
+					<input class="btn btn-primary btn-block"type="button" id="botonEnviar" value="Enviar">
+			
 					<br>
-					
+					<br>
+				
 					<p align="center" style="color:black; font-weight: bold; margin-top: 20px">O ingrese con sus redes sociales</p><br>
 					<div class="form-group " align="center" >
 							
@@ -91,10 +100,58 @@
 		
 	
 	</div>
+ 
+	<script type="text/javascript">
+		function isEmail(email) {
+		  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		  return regex.test(email);
+		}
+		
+			$("#botonEnviar").click(function(){
+				var campoVacio="";
+				var mensajeError="";
+			   // verificacion de campos no vacios
+			   if($("#nombre").val()==""){
+				campoVacio = campoVacio+"Nombre<br>";
+			   }  
+			   if($("#correo").val()==""){
+				campoVacio = campoVacio+"Correo<br>";
+			   }
+			  
+			   if($("#pass").val()==""){
+				campoVacio = campoVacio+"Contraseña<br>";
+			   }
+			   if($("#Confirmpass").val()==""){
+				campoVacio = campoVacio+"Confirmación password<br>";
+			   }
+			
+			   //validamos el formato del email
+			   if(isEmail($("#correo").val())==false ){
+			 mensajeError = mensajeError+"<p>Tu dirección de correo no es valida</p>";
+			   }
+			  
+		
+			   if($("#pass").val() != $("#Confirmpass").val()){
+				mensajeError = mensajeError+"<p>Las contraseñas no coinciden</p>";
+			   }
+			  
+			   if(campoVacio!=""){
+				   mensajeError = "<p>Los siguientes campos estan vacios: </p>"+campoVacio+mensajeError;
+			   }
+			   if(mensajeError!=""){
+				   $("#mensajeErrorCampos").html(mensajeError);
+			   }
+			   else{
+				   $("#mensajeExito").html("<p>Enhorabuena, te has registrado con exito...enviando datos");
 
+						$("#mensajeErrorCampos").css("display","none");
+			   }
+			})
+			</script>
+			<script src="js/formulario.js"></script>
 <script src="js/controlador.js"></script>
 <script src="js/bootstrap.min.js"></script>
-	<script src="js/formulario.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script>
+
+
 </body>
 </html>

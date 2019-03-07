@@ -19,7 +19,15 @@ var validarInputs = function(){
 				elementos[i].className = elementos[i].className.replace(" error", "");
 			}
 		}
+
+
 	}
+
+
+
+//	document.getElementById('tabla-usuarios').innerHTML+=
+
+
 
 	// Comprobando que las contraseñas coincidan
 	if (elementos.pass.value !== elementos.pass2.value) {

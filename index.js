@@ -2,6 +2,7 @@
 var express = require("express");
 //Crear una aplicacion de nodejs con express
 var app = express();
+var mysql = require('mysql');
 
 //definir una carpeta como publica para que los usuarios puedan acceder a su contenido
 app.use(express.static("public"));
@@ -16,6 +17,9 @@ var credenciales = {
   database: "bd_proyecto"
 };
 
+
+
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
@@ -25,7 +29,4 @@ app.listen(3333, function(){
     console.log("Servidor levantado en el puerto 3333");
 });
 
-var mysql = require('mysql');
 
-
-var conexion = mysql.createConnection(credenciales);
