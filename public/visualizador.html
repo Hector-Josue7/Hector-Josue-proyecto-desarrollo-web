@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"> </script>
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+
+<style type="text/css">
+body{
+    font-family: sans-serif;
+    margin:0;
+    padding:0;
+}
+#barra{
+    width:100%;
+    background-color: #EEEEEE;
+    padding:5px;
+    height:30px;
+}
+#logo{
+    float: left;
+    font-weight: bold;
+    font-size: 120%;
+    padding:3px 5px;
+}
+#contenedorBotones{
+    margin:0 auto;
+    width:240px;
+}
+.boton{
+    float:left;
+    border: 1px solid grey;
+    padding:6px;
+    border-right:none;
+    font-size:90%;
+
+}
+#salida{
+    border-right:1px solid grey;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px; 
+}
+#html{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.botonMarcado{
+    background-color:#E5E5E5;
+}
+.activo{
+    background-color: #EBF4FF;
+}
+textarea{
+    resize:none;
+    border-top:none;
+    border-color:grey;
+}
+.panel{
+    float:left;
+    width:50%;
+    border-left: none;
+}
+iframe{
+    border:none;
+}
+.oculto{
+    display:none;
+}
+</style>
+</head>
+<body>
+    <div id="barra">
+        <div id="logo">
+            CodePlayer
+        </div>
+        <div id="contenedorBotones">
+            <div class="boton activo" id="html">HTML</div>
+            <div class="boton" id="css">CSS</div>
+            <div class="boton" id="javascript">JavaScript</div>
+            <div class="boton activo" id="salida">Salida</div>
+        </div>
+    </div>
+
+    <div id="contenedorBody">
+        <textarea id="htmlPanel" class="panel"><h1>Hola a todos</h1></textarea>
+        <textarea id="cssPanel" class="panel oculto" >body{background-color:blue;}</textarea>
+        <textarea id="javascriptPanel" class="panel oculto">document.write('Estoy en el contenedor javascript')</textarea>
+        <iframe id="salidaPanel" class="panel"></iframe>
+    </div>
+
+   <script type="text/javascript">
+
+
+    function actualizarSalida(){
+        $("iframe").contents().find("html").html("<html><head><style type='text/css'>"+$("#cssPanel").val()+"</style> </head><body>"+ $("htmlPanel").val())+"</body></html>";
+    
+    document.getElementById("salidaPanel").contentWindow.eval($("#javascriptPanel").val());
+    }
+        $(".boton").hover(function(){
+            $(this).addClass("botonMarcado");
+        }, function(){
+            $(this).removeClass("botonMarcado");
+        });
+        $(".boton").click(function(){
+            $(this).toggleClass("activo");
+            $(this).removeClass("botonMarcado");
+            var panelId = $(this).attr("id")+"Panel";
+            $("#"+panelId).toggleClass("oculto");
+            var numeroDePanelesActivos =4-$(".oculto").length;
+            $(".panel").width(($(window).width()/numeroDePanelesActivos)-10);
+        });
+        $(".panel").height($(window).height()-$("#barra").height());
+        $(".panel").width($(window).width()/2 -10);
+        
+        actualizarSalida();
+        $("textarea").on('change keyup paste',function(){
+           actualizarSalida();
+         });
+
+       
+    </script>
+</body>
+</html>

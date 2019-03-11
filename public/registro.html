@@ -41,6 +41,11 @@
 				
 						<label class="label" for="nombre">Nombre:</label>
 					</div>
+					<div class="input-group">
+						<input type="text" id="apellido" name="apellido">
+				
+						<label class="label" for="apellido">Apellido:</label>
+					</div>
 					
 					<div class="input-group">
 						<input type="email" id="correo" name="correo">
@@ -112,6 +117,9 @@
 				var mensajeError="";
 			   // verificacion de campos no vacios
 			   if($("#nombre").val()==""){
+				campoVacio = campoVacio+"Nombre<br>";
+				 }  
+				 if($("#apellido").val()==""){
 				campoVacio = campoVacio+"Nombre<br>";
 			   }  
 			   if($("#correo").val()==""){
