@@ -112,3 +112,11 @@ if(exito){
    }
    window.addEventListener("load",iniciar, false);
 // FIN DEL CODIGO INDEXED_DB PARA EL FOMULARIO REGISTRO
+
+//CODIGO DEL DASHBOARD
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+// FIN DEL CODIGO DEL DASHBOARD
+

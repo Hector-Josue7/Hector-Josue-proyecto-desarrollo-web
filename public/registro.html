@@ -105,6 +105,31 @@
 		
 	
 	</div>
+	<script type="text/javascript">
+	$( "#botonEnviar" ).click(function() {
+		var parametros = `nombre=${$("#nombre").val()}
+                            &apellido=${$("#apellido").val()}
+                            &correo=${$("#correo").val()}
+                            &pass=${$("#pass").val()}`;
+						
+
+            console.log(parametros);
+            $.ajax({
+                url:"/guardar-usuario",
+                method:"POST",
+                data: parametros,
+                dataType:"json", //json
+                success: function(respuesta){ //200 OK
+                    console.log(respuesta);
+                },
+                error:function(error){
+                    console.error(error);
+                }
+            });
+});
+
+
+	</script>
  
 
 			<script src="js/formulario.js"></script>
