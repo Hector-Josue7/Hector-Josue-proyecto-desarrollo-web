@@ -26,7 +26,9 @@ function isEmail(email) {
        if($("#Confirmpass").val()==""){
         campoVacio = campoVacio+"Confirmación password<br>";
        }
-    
+       if($("#select-plan").val()==""){
+        campoVacio = campoVacio+"Plan <br>";
+       }
        //validamos el formato del email
        if(isEmail($("#correo").val())==false ){
      mensajeError = mensajeError+"<p>Tu dirección de correo no es valida</p>";
@@ -100,7 +102,7 @@ if(exito){
 
 
        function mostrar(){
-        zonadatos.innerHTML="";
+       
         var transaccion = bd.transaction(["usuarios"], "readonly");
         var almacen = transaccion.objectStore("usuarios");
         var cursor = almacen.openCursor();
