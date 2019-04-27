@@ -1,16 +1,19 @@
 const users = require('../models/user')
 
 function getUser(req,res){
-    users.find({_id:req.params.id})
-  .then(data=>{
-      res.send(data);
-  })
-  .catch(error=>{
-      res.send(error);
-  });
+  let userId = req.params.id
+users.findById(userId, (err, user)=>{
+  if(err) return res.status(500).send({message: `Error al relizar la petición: ${err}`})
+  if(!user) return res.status(404).send({message: `El producto no existe`})
+  res.status(200).send({user: user})
+})
+
+
+
+
   }
 
-function getUsers(req,res){
+function getUsers(req, res){
     users.find({}, (err,usersi) =>{
         if(err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
         if(!usersi) return res.status(404).send({message: 'No existen usuarios'})
@@ -35,30 +38,30 @@ function saveUser (req,res){
   })
 }
 function updateUser(req,res){
-  users.update(
+ 
+ users.update(
     {_id:req.params.id},
     {
         nombre : req.body.nombre,
         apellido : req.body.apellido,
         correo:req.body.correo,
         pass: req.body.pass,
-
-        plan : {
+       plan : {
                 nombre : req.body.nombrePlan
-              
-        }
-
-     
-    }
+         }
+  }
 ).then(result=>{
-    res.send(result);
+    res.send(result)
 })
-.catch(error=>{
+.catch(error=>{ 
     res.send(error);
-});
+}   )
 }
-function deleteUser (id){
-    let userId = req.params.userId
+  
+
+
+function deleteUser (req,res){
+    let userId = req.params.id
     users.findById(userId, (err, user) =>{
       if(err) res.status(500).send({message: `Error al borrar el usuario: ${err}`})
     user.remove(err =>{

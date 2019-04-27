@@ -69,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<input type="email" id="correo" placeholder="Email@example.com" required=""/>
 							</div>
 							<div class="icon1">
-								<input type="clave" placeholder="clave" required=""/>
+								<input type="password" placeholder="clave" id ="clave" required="" />
 							</div>
 							<div class="login-check">
 								 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
@@ -102,17 +102,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>	
 	<!-- //main -->
 <script> 
-$("#btnLogin").click(function(){
-    console.log($("#formularioLogin").serialize());
+
+
+
+	$("#btnLogin").click(function(){
+		var parametros = `correo=${$("#correo").val()}
+						   &clave=${$("#clave").val()}`;
     $.ajax({
         url:"/login",
         method:"POST",
-        data:$("#formularioLogin").serialize(),
+        data:parametros,
         dataType:"json",
         success:function(res){
             console.log(res);
             if (res.status == 1)
-                window.location.href = "/interfazPersonal.html";
+                window.location.href = "/interfazPersonali.html";
             else 
                 alert(res.mensaje);
         },
@@ -121,7 +125,6 @@ $("#btnLogin").click(function(){
         }
     });
 });
-
 </script>
 </body>
 </html>
