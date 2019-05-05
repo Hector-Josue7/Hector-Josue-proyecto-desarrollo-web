@@ -1,12 +1,15 @@
-var mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-var plan_esquema = new mongoose.Schema(
-    {
-        nombre : String,
-        descripcion : String
-    }
-);
-module.exports = mongoose.model('planes',plan_esquema);
+
+
+const PlanSchema = new Schema({
+  usuarios :{type : Array}
+});
+
+
+
+module.exports = mongoose.model('Plan', PlanSchema);
 
 
 

@@ -9,6 +9,7 @@ const ruteador = express.Router()
 
 
 
+
 //ruteador.get('/', )
 ruteador.get('/getUsers', userController.getUsers) //obtener todos los usuarios  http://localhost:3001/usuarios/getUsers
 ruteador.get('/:id',userController.getUser) // obtener un usuario
