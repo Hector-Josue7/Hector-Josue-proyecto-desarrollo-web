@@ -23,7 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">	
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-social.css">
-
+<script src="js/jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
@@ -64,18 +64,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="header-bottom">
 				<div class="header-right w3agile">
 					<div class="header-left-bottom agileinfo">
-						<form id= "formularioLogin">
+						<form  id="formularioLogin">
 							<div class="icon1">
-								<input type="email" id="correo" placeholder="Email@example.com" required=""/>
+								<input type="text" id="correo" placeholder="Correo" class= "form-control" required=""/>
 							</div>
 							<div class="icon1">
-								<input type="password" placeholder="clave" id ="clave" required="" />
+								<input type="password" id="pass" placeholder="clave" class= "form-control" required=""/>
 							</div>
-							<div class="login-check">
+
+<!--
+		<form id="formulario">
+									<input type="text" placeholder="Usuario" name="usuario">
+									<input type="password" placeholder="Password" name="contrasena">
+									<button type="button" id="btn-login">Login</button>
+								</form>
+-->
+					
+							   <!--
+		<div class="login-check">
 								 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
 							</div>
+							   -->
+					
 							<div class="bottom">
-								<input type="button" value="Log in" id= "btnLogin" />
+								<input type="button" class = "btn btn-primary btn-lg" value="Log in" id= "btnLogin" />
 							</div>
 							<p><a href="#">Forgot Password?</a></p>
 
@@ -102,21 +114,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>	
 	<!-- //main -->
 <script> 
-
-
-
-	$("#btnLogin").click(function(){
-		var parametros = `correo=${$("#correo").val()}
-						   &clave=${$("#clave").val()}`;
+$("#btnLogin").click(function(){
+//	console.log($("#formularioLogin").serialize());
+	
+	var parametros = `correo=${$("#correo").val()}
+					&pass=${$("#pass").val()}`;
+					
     $.ajax({
-        url:"/login",
+        url:"/usuarios/login",
         method:"POST",
         data:parametros,
         dataType:"json",
         success:function(res){
             console.log(res);
             if (res.status == 1)
-                window.location.href = "/interfazPersonali.html";
+                window.location.href = "/interfazPersonal.html";
             else 
                 alert(res.mensaje);
         },
@@ -125,6 +137,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
     });
 });
+
+
+
+
+
+
+
 </script>
 </body>
 </html>

@@ -1,28 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="css/estilo-registro.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-	<link rel="shortcut icon" type="image/png" href="images/favicon.ico">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">	
-	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-social.css">
-
-	<script src="js/jquery-3.3.1.min.js"></script>
-
-	<title>Formularios</title>
-
-<style>
- #mensajeErrorCampos{
-     color:red;
-     font-size:110% !important;
- }
-</style>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="shortcut icon" type="image/png" href="images/faviconRegister.jpeg">
+	<script src= "js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-	
 		<div class="w3top-nav-right">	
 				<ul>
 			
@@ -34,54 +22,54 @@
 			</div>
 	<div class="contenedor-formulario">
 		<div class="wrap">
-			<form  id="formularioRegistro" >
+			<form action="" class="formulario" name="formulario_registro" method="get">
 				<div>
-					    <div id="mensajeErrorCampos"></div>
-				<div class="input-group">
+						<div id="mensajeErrorCampos"></div>
+					<div class="input-group">
 						<input type="text" id="nombre" name="nombre">
-				
 						<label class="label" for="nombre">Nombre:</label>
 					</div>
 					<div class="input-group">
-						<input type="text" id="apellido" name="apellido">
-				
-						<label class="label" for="apellido">Apellido:</label>
+						<input type="email" id="correo" name="correo">
+						<label class="label" for="correo">Correo:</label>
 					</div>
-					
 					<div class="input-group">
-						<input type="email" id="correo" name="correo" class="form-control">
-						
-						<label class="label" for="correo">Correo</label>
-					</div>
-
-		
-					<div class="input-group">
-						<input type="password" id="pass" name="pass" > 
-					
+						<input type="password" id="pass" name="pass">
 						<label class="label" for="pass">Contraseña:</label>
 					</div>
-				
-	<div class="input-group">
-						<input type="password" id="Confirmpass" name="pass" >
-						<label class="label" for="Confirmpass">Confirmar contraseña:</label>
+					<!--
+
+					<div class="input-group">
+						<input type="password" id="pass2" name="pass2">
+						<label class="label" for="pass2">Repetir Contraseña:</label>
 					</div>
-			
-	
-				    <div class="form-group">
-						<label for="selectPlan" style="color:black">Elija el plan que desee</label>
-						<select class="form-control" id="selectPlan" name="selectPlan">
+					-->
+					
+
+					<select id="form-tipo-plan" class="form-control">
+							<option value="Gratis">Gratis</option>
+							<option value="Normal">Normal</option>
+							<option value="Avanzado">Avanzado</option>
 					
 						</select>
-					
-					  </div>
-	
-					<div class="input-group checkbox">
-						<input type="checkbox" name="terminos" id="terminos" value="true">
 
+					<!--
+											<div class="input-group radio">
+						<input type="radio" name="sexo" id="hombre" value="Hombre">
+						<label for="hombre">Hombre</label>
+						<input type="radio" name="sexo" id="mujer" value="Mujer">
+						<label for="mujer">Mujer</label>
 					</div>
+	<div class="input-group checkbox">
+						<input type="checkbox" name="terminos" id="terminos" value="true">
+						<label for="terminos">Acepto los Terminos y Condiciones</label>
+					</div>
+					-->
+				<br><br>
+						
 					<div id="mensajeExito" style="color:green; font-weight: bold"></div>
 					<input class="btn btn-primary btn-block"type="button" id="botonEnviar" value="Enviar">
-			
+				
 					<br>
 					<br>
 				
@@ -98,95 +86,14 @@
 <!--Github-->
 <a  style="background-color: rgb(33, 31, 73)" class="btn-floating btn-lg btn-git" type="button" role="button"><i class="fab fa-github"></i></a>
 
-					</div>
-	
-
-
 				</div>
-				
-		
-				
-			
 			</form>
-			
-
 		</div>
-		
-	
-	</div><!--
-		
-		
-		---->
-	<script type="text/javascript">
-$("#botonEnviar").click(function(){
-    var parametros = $("#formularioRegistro").serialize() + "&nombrePlan="+$("#selectPlan option:selected").text();
-    console.log("Información a guardar: " + parametros);
-    $.ajax({
-        url:"/usuarios",
-        method:"post",
-        data: parametros,
-        dataType: "json",
-        success:function(res){
-            console.log(res);
-/* var estrellas="";
-            for (var j=0;j<res.calificacion;j++)
-                estrellas+='<i class="fas fa-star"></i>';
-            //Anexar la pelicula guardada
-            $("#"+res.categoria._id).append( 
-                `<div class="col-xl-3 col-sm-12 col-xs-12" id="${res._id}">
-                    <div>
-                       <div class="encabezado" style="background-image: url(${res.caratula});"></span><span class="">${ res.original?'<img src="img/logo-netflix-small.png">':'' }</span></div>
-                        <div class="descripcion">
-                            <div class="titulo-descripcion">${res.nombre}</div>
-                            <div class="canal">${res.descripcion}</div>
-                            <div class="visualizaciones">${estrellas}</div>
-                            <div class="visualizaciones"><a href="" onclick="verMas(event, '${res._id}')">Ver más</a> | <a href="" onclick="eliminar(event, '${res._id}')">Eliminar</a></div>
-                        </div>
-                    </div>
-                </div>`);*/
-           
-        },
-        error:function(error){
-            console.log(error);
-           // $("#modalVerMas").modal("hide");
-        }
-    });
-});
-	/*
-	$( "#botonEnviar" ).click(function() {
-		var parametros = `nombre=${$("#nombre").val()}
-                    &apellido=${$("#apellido").val()}
-						     	&correo=${$("#correo").val()}
-					
-							&pass=${$("#pass").val()}
-						
-							`;
-						
+	</div>
 
-            console.log(parametros);
-            $.ajax({
-                url:"/guardar-usuario",
-                method:"POST",
-                data: parametros,
-                dataType:"json", //json
-                success: function(respuesta){ //200 OK
-                    console.log(respuesta);
-                },
-                error:function(error){
-                    console.log(error);
-                }
-            });
-});
-	*/
-
-
-	</script>
- 
-
-			<script src="js/formulario.js"></script>
-<script src="js/controlador.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
+	<script src="js/formulario.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/validar.js"></script>
 
 </body>
 </html>

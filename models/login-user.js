@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
-
-const { Schema } = mongoose;
+const Schema = mongoose.Schema
+//const { Schema } = mongoose;
 
 const userSchema = new Schema({
   email: String,
@@ -19,3 +19,13 @@ userSchema.methods.comparePassword= function (password) {
 module.exports = mongoose.model('user', userSchema);
 
 ///**************************************** */
+/* 
+const ProductSchema = Schema ({
+  name: String,
+  picture: String,
+  price: {type: String, enum:[ 'computers', 'phones', 'accesories']},
+  description: String
+})
+
+module.exports=mongoose.model('Product', ProductSchema)
+*/
