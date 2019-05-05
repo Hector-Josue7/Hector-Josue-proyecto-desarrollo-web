@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const userController = require('../controllers/usersControlador')
-//const userController2 = require('../../../Documents/indexedEjemplo/AuthCtrl')
+const auth = require('../modules/middlewares')
 const middleware = require('../modules/middleware');
 var passport = require('passport');
 const ruteador = express.Router()
@@ -10,13 +10,14 @@ const ruteador = express.Router()
 
 
 //ruteador.get('/', )
-ruteador.get('/getUsers', userController.getUsers) //obtener todos los usuarios  http://localhost:3001/usuarios
+ruteador.get('/getUsers', userController.getUsers) //obtener todos los usuarios  http://localhost:3001/usuarios/getUsers
 ruteador.get('/:id',userController.getUser) // obtener un usuario
 ruteador.post('/signup',userController.saveUser) // guardar usuarios http://localhost:3001/usuarios/signup
 ruteador.put('/:id', userController.updateUser)  // actualizar usuarios  http://localhost:3001/usuario/
 ruteador.delete('/:id', userController.deleteUser) //eliminar usuarios
 
-ruteador.post("/login", userController.login); // http://localhost/usuarios/login
+ 
+ruteador.post("/login", userController.login); // http://localhost:3001/usuarios/login
 
 ruteador.get("/prueba", middleware.paginaInicio, function (req, res) {
   res.render('prueba');
@@ -33,6 +34,32 @@ ruteador.get("/peticion-registringido",verificarAutenticacion,function(req, res)
   res.end();
 });
 
+
+ruteador.post('/signup2', async (req, res) => {
+  let errors = [];
+  const { nombre, correo, pass, tipoPlan } = req.body;
+
+  if(pass.length < 4) {
+    errors.push({text: 'Passwords must be at least 4 characters.'})
+  }
+  if(errors.length > 0){
+    res.render('/signup', {errors, name, email, pass});
+  } else {
+    // Look for email coincidence
+    const emailUser = await User.findOne({email: email});
+    if(emailUser) {
+      req.flash('error_msg', 'The Email is already in use.');
+      res.redirect('/signup');
+    } else {
+      // Saving a New User
+      const newUser = new User({name, email, password});
+      newUser.password = await newUser.encryptPassword(password);
+      await newUser.save();
+      req.flash('success_msg', 'You are registered.');
+      res.redirect('/signin');
+    }
+  }
+});
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,
 
 

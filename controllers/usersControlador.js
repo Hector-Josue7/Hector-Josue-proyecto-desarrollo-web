@@ -1,6 +1,7 @@
 
 const mongoose  = require('mongoose')
 const express = require('express');
+const passport = require('passport');
 
 //var User = require("../models/user").User;
 var User = require('../models/user')
@@ -194,30 +195,21 @@ function signUp (req,res){
 
 
 function signIn(req,res){
-  User.find({correo:req.body.correo}, (err,user)=>{
+  User.find({correo:req.body.correo, pass:req.body.pass}, (err,user)=>{
     if(err) return res.status(500).send({message:err}) 
     if(!user) return res.status(404).send({message: 'No existe el usuario'})
     //req.user= user
-    req.us= user
+    req.user= user
     res.status(200).send({
       message: 'Te has logueado correctamente',
-      token: service.createToken(us)
+      token: service.createToken(user)
 
     })
   })
 }
 
 
-
-
-
 ///kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-
-
-
-
-
-
 
 module.exports ={
 getUser,
@@ -228,5 +220,6 @@ deleteUser,
 login,
 logout,
 signUp,
-signIn
+signIn,
+
 }
