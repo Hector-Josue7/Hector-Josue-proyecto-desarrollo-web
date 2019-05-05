@@ -65,12 +65,12 @@ ruteador.post('/signup2', async (req, res) => {
 
 
 
-ruteador.get('/inicio', (req, res, next) => {
+ruteador.get('/', (req, res, next) => {
   res.render('index');
 });
 
 ruteador.get('/signup', (req, res, next) => {
-  res.render('signup');
+  res.render('registro');
 });
 
 ruteador.post('/signup', passport.authenticate('local-signup', {
