@@ -121,7 +121,7 @@ $("#btnLogin").click(function(){
 					&pass=${$("#pass").val()}`;
 					
     $.ajax({
-        url:"/usuarios/login",
+        url:"/usuarios/signin",
         method:"POST",
         data:parametros,
         dataType:"json",

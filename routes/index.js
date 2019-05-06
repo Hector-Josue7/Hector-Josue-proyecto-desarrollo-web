@@ -5,13 +5,9 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-
-router.get('/registrarse', (req, res) => {
-  res.render('registrarPersona');
+router.get('/about', (req, res) => {
+  res.render('about');
 });
 
 module.exports = router;
+
