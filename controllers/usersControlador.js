@@ -3,7 +3,7 @@ const mongoose  = require('mongoose')
 const express = require('express');
 const passport = require('passport');
 
-var User = require("../models/user").User;
+//var User = require("../models/user").User;
 var User = require('../models/user')
 const service = require('../modules/services')
 function getUser(req,res){

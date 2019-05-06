@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose')
 
 // Models
 const Note = require('../models/Note');
 
 // Helpers
-const { isAuthenticated } = require('../modules/auth');
+const { isAuthenticated } = require('../helpers/auth');
 
 // New Note
 router.get('/notes/add', isAuthenticated, (req, res) => {
